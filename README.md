@@ -1,4 +1,4 @@
-# Movie Database & Watchlist App
+# Movie Database & Watchlist App (Flick_Nest)
 
 A web-based movie database and watchlist application where users can sign up, log in, browse movies, search by name, year, and status, and add shows to their favorites or watchlist.
 
