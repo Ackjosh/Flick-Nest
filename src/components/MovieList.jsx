@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Heart } from 'lucide-react';
 
 function MovieCard({ movie, onMovieClick, isDarkMode }) {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const toggleFavorite = (e) => {
+    e.stopPropagation(); // Prevents opening modal when clicking heart
+    setIsFavorite(!isFavorite);
+  };
+
   return (
     <div 
       className={`
@@ -20,16 +28,22 @@ function MovieCard({ movie, onMovieClick, isDarkMode }) {
       `}
       onClick={() => onMovieClick(movie)}
     >
-      <div className="h-83 overflow-hidden">
+      <div className="h-83 overflow-hidden relative">
         <img 
           src={movie.main_picture} 
           alt={movie.title} 
           className="w-full h-full object-cover"
           onError={(e) => {
-            // Fallback image if main picture fails to load
             e.target.onerror = null; 
-            e.target.src = '/placeholder-image.jpg'; // Make sure to have a placeholder in public folder
+            e.target.src = '/placeholder-image.jpg';
           }}
+        />
+        {/* Heart Icon positioned at bottom right of the image */}
+        <Heart 
+          className={`absolute bottom-2 right-2 w-6 h-6 cursor-pointer transition ${
+            isFavorite ? 'text-red-500 fill-red-500' : 'text-gray-500 fill-gray-500'
+          }`} 
+          onClick={toggleFavorite} 
         />
       </div>
       <div className="p-2">
