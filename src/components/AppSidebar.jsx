@@ -36,7 +36,7 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <Sidebar className="bg-black text-white">
+    <Sidebar className="shadow-md bg-white/1.5 backdrop-blur-3xl">
       <SidebarContent>
         <div className="text-xl font-bold text-white mb-6 text-center">
           FlickNest

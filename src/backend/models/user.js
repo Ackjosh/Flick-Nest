@@ -1,9 +1,24 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
 
-const UserSchema = new mongoose.Schema({
-  userId: { type: String, required: true, unique: true }, // Unique user ID
-  favorites: [{ type: String }], // Array of favorite movie IDs
-  watchlist: [{ type: String }] // Array of watchlist movie IDs
-});
+const userSchema = new mongoose.Schema(
+  {
+    firebaseUid: {
+      type: String,
+      required: true,
+      unique: true
+    },
+    // --- CRITICAL CHANGE FOR DUPLICATES: ADD { _id: false } HERE ---
+    watchlist: [{
+      id: { type: String, required: true }, // It's good practice to make 'id' required
+      media_type: { type: String, required: true, enum: ['movie', 'tv'] }
+    }, { _id: false }], // <--- Add this option
+    // --- CRITICAL CHANGE FOR DUPLICATES: ADD { _id: false } HERE ---
+    favorites: [{
+      id: { type: String, required: true }, // It's good practice to make 'id' required
+      media_type: { type: String, required: true, enum: ['movie', 'tv'] }
+    }, { _id: false }] // <--- Add this option
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.model('User', UserSchema);
+export default mongoose.model("User", userSchema);
