@@ -27,7 +27,7 @@ This project focuses on providing a movie database and watchlist system where us
 ## Features
 
 - **User Authentication**: Sign up and log in functionality.
-- **Movie Listings**: Browse and view a collection of movies.
+- **Movie Listings**: Browse and view a collection of 500+ movies and tv shows with the help of TMDB API.
 - **Search & Filter**: Search movies by name, release year, and status (ongoing/completed).
 - **Watchlist & Favorites**: Add movies to personal watchlists and favorite lists.
 
@@ -38,7 +38,7 @@ This project focuses on providing a movie database and watchlist system where us
 - **Frontend**: React.js
 - **Backend**: Node.js
 - **Database**: MongoDB
-- **Authentication**: Clerk
+- **Authentication**: Firebase
 
 ---
 

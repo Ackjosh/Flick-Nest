@@ -104,8 +104,6 @@ function MovieDetailModal({ movie, isOpen, onClose, isDarkMode, userId, userWatc
     } catch (error) {
       console.error("Error updating favorite status:", error.response?.data || error.message);
       alert('Failed to update favorite status. Please try again.');
-      // If you kept the optimistic update, you'd revert it here
-      // setIsFavorite(isFavorite);
     } finally {
       setIsLoadingFavorite(false);
     }

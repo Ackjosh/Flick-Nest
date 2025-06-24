@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Loader2 } from 'lucide-react';
 import Layout from './Layout';
-// REMOVE MovieCard import as we're switching to table layout
-// import MovieCard from './MovieCard'; 
 import MovieDetailModal from './MovieDetailModal';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
@@ -89,7 +87,6 @@ const Watchlist = ({ auth, isDarkMode, toggleDarkMode, userId, userWatchlist, us
     );
   }
 
-  // Render the table if watchlistedMedia has items
   return (
     <Layout isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode}>
       <div className="container mx-auto p-4">
@@ -111,7 +108,7 @@ const Watchlist = ({ auth, isDarkMode, toggleDarkMode, userId, userWatchlist, us
               </tr>
             </thead>
             <tbody>
-              {/* IMPORTANT: Use watchlistedMedia here, not favoritedMedia */}
+
               {watchlistedMedia.map((media, index) => {
                 const titleOrName = media.title || media.name || 'N/A';
                 const posterUrl = media.poster_path
@@ -130,7 +127,7 @@ const Watchlist = ({ auth, isDarkMode, toggleDarkMode, userId, userWatchlist, us
                 return (
                   <tr key={`${media.id}-${media.media_type}`} className="hover:bg-gray-700 transition">
                     <td className="py-2 px-4 border-b border-gray-700 text-center">
-                      {/* This dot indicates it's on the watchlist, change color if needed */}
+
                       <div className="w-3 h-3 rounded-full bg-blue-500 mx-auto" title="Watchlisted"></div>
                     </td>
                     <td className="py-2 px-4 border-b border-gray-700">{index + 1}</td>
@@ -166,7 +163,6 @@ const Watchlist = ({ auth, isDarkMode, toggleDarkMode, userId, userWatchlist, us
         </div>
       </div>
 
-      {/* MovieDetailModal */}
       {selectedMedia && (
         <MovieDetailModal
           movie={selectedMedia}

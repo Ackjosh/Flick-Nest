@@ -2,8 +2,7 @@
 import React from 'react';
 import MovieCard from './MovieCard';
 
-// MovieList now accepts onUserToggleSuccess
-function MovieList({ movies, onMovieClick, isDarkMode, userId, userWatchlist, userFavorites, onUserToggleSuccess }) { // <--- ADDED onUserToggleSuccess
+function MovieList({ movies, onMovieClick, isDarkMode, userId, userWatchlist, userFavorites, onUserToggleSuccess }) {
   if (!movies || movies.length === 0) {
     return null;
   }
